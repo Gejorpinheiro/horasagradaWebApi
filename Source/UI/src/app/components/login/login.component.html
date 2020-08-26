@@ -1,0 +1,23 @@
+<div class="text-center">
+  <form (ngSubmit)="logar()" [formGroup]="loginForm" *ngIf="login">
+      <img src="../../../assets/images/prato.jpg" alt="prato">
+      <h2>Login</h2>
+      <mat-form-field class="example-full-width">
+        <mat-label>Usuário</mat-label>
+        <input matInput formControlName="usuario" required>
+        <mat-error>Você precisa inserir um usuário</mat-error>
+      </mat-form-field>
+      <button type="submit" mat-stroked-button color="primary" class="ml-3" [disabled]="!loginForm.valid">Entrar</button>
+      <a href="javascript:void(0);" (click)="toggleCadastro()">Ou cadastre um usuário</a>
+  </form>
+  <form (ngSubmit)="cadastrar()" [formGroup]="cadastroForm" *ngIf="!login">
+    <h2>Cadastro</h2>
+    <mat-form-field class="example-full-width">
+      <mat-label>Novo Usuário</mat-label>
+      <input matInput formControlName="novoUsuario">
+      <mat-error>Você precisa inserir um usuário</mat-error>
+    </mat-form-field>
+    <button type="submit" mat-stroked-button color="primary" class="ml-3" [disabled]="!cadastroForm.valid">Entrar</button>
+    <a href="javascript:void(0);" (click)="toggleCadastro()">Voltar</a>
+  </form>
+</div>

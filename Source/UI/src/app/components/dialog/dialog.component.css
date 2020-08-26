@@ -1,0 +1,20 @@
+.f-right {
+    float: right;
+}
+
+form {
+    margin-top: 20px;
+}
+
+.ib{
+    display: inline-block;
+}
+
+.chip {
+    display: inline-block;
+    background-color: #673ab7;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 10px 10px 10px 0;
+    color: #fff;
+}

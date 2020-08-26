@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1 mat-dialog-title>
+      {{ data.restaurante.nome }}
+      <span class="f-right">
+        {{ votos }} votos
+      </span>
+    </h1>
+  </div>  
+</div>
+<div mat-dialog-content>
+  <mat-tab-group>
+    <mat-tab label="Detalhes">
+      <form [formGroup]="restauranteForm" (submit)="salvar()">
+        <div class="col-md-6 ib">
+          <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="nome" required>
+            <mat-error>Você precisa inserir um nome</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 ib">
+          <mat-form-field>
+            <mat-label>Endereço</mat-label>
+            <input matInput formControlName="endereco" required>
+            <mat-error>Você precisa inserir um endereço</mat-error>
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-tab>
+    <ng-container *ngIf="data.modo == 'Ver'">
+      <mat-tab label="Votantes">
+        <span class="chip" *ngFor="let usuario of usuariosVotantes">{{ usuario.nome }}</span>
+      </mat-tab>
+      <!-- <mat-tab label="Comentários">
+        <p>
+          Em desenvolvimento
+        </p>
+      </mat-tab> -->
+    </ng-container>
+  </mat-tab-group>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button color="primary" (click)="votar()" *ngIf="data.modo == 'Ver'" [disabled]="bloqueiaVoto">Votar</button>
+  <button mat-button [mat-dialog-close]="undefined">Cancelar</button>
+  <button mat-button (click)="salvar()" [disabled]="this.modo == 'Editar' && this.restauranteForm.invalid">Salvar</button>
+</div>

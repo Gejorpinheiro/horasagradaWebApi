@@ -1,0 +1,43 @@
+<mat-toolbar color="primary">
+    <h1>Olá {{ usuario?.nome }}, onde vamos almoçar ?</h1>
+    <span class="example-spacer"></span>
+    <button mat-raised-button color="basic" aria-label="Encerrar votação" (click)="encerrarVotacao()">
+      Encerrar votação
+    </button>
+    <button class="ml-2" mat-raised-button color="warn" aria-label="Encerrar votação" (click)="zerarVotacao()">
+      zerar votação
+    </button>
+</mat-toolbar>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="mb-4 col-md-3" *ngFor="let restaurante of listaRestaurantes">
+          <mat-card [class]="manipulaCardClass(restaurante)">
+              <mat-card-header>
+                <mat-card-title>{{ restaurante.nome }}</mat-card-title>
+                <mat-card-subtitle>{{ restaurante.endereco }}</mat-card-subtitle>
+              </mat-card-header>
+              <img mat-card-image src="../../../assets/images/prato.jpg" alt="prato">
+              <mat-card-content>
+                <p>
+                  {{ restaurante.votos }} Votos
+                </p>
+              </mat-card-content>
+              <mat-card-actions align="end">
+                <button mat-button color="primary" (click)="detalhar(restaurante.id, 'Editar')">Editar</button>
+                <button mat-button color="primary" (click)="detalhar(restaurante.id, 'Ver')">Ver</button>
+              </mat-card-actions>
+          </mat-card>
+        </div>
+        <div class="mb-4 col-md-3">
+          <mat-card>
+              <mat-card-header>
+                <mat-card-title>Novo restaurante</mat-card-title>
+              </mat-card-header>
+              <mat-card-actions align="center">
+                <button mat-button color="primary" (click)="adicionar()">Adicionar</button>
+              </mat-card-actions>
+          </mat-card>
+        </div>
+    </div>
+</div>
